@@ -74,3 +74,11 @@ Then save the VM state:
 
 	vagrant suspend
 
+To resume:
+
+    vagrant resume
+
+Then ssh into the machine again:
+
+    vagrant ssh
+
