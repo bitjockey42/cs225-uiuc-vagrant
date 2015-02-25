@@ -52,7 +52,5 @@ where `PATH_TO_DATA_FOLDER` is the path to where `data` is in OS X (e.g. `~/stuf
 
 Now you can compile your labs/MPs from within the vagrant VM and run their resulting executables through `valgrind` or `asan`:
 
-![Running asan](screenshot_asan.png)
-
 ![Running valgrind](screenshot_valgrind.png)
 
