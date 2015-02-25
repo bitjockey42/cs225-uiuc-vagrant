@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>CS225 (UIUC) vagrant by hckr</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>CS225 (UIUC) vagrant</h1>
+        <p>vagrant setup to match the VM for UIUC&#39;s cs225 course</p>
+        <p class="view"><a href="https://github.com/hckr/cs225-uiuc-vagrant">View the Project on GitHub <small>hckr/cs225-uiuc-vagrant</small></a></p>
+        <ul>
+          <li><a href="https://github.com/hckr/cs225-uiuc-vagrant/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/hckr/cs225-uiuc-vagrant/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/hckr/cs225-uiuc-vagrant">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a id="instructions" class="anchor" href="#instructions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Instructions</h1>
+
+<h2>
+<a id="what-this-is" class="anchor" href="#what-this-is" aria-hidden="true"><span class="octicon octicon-link"></span></a>What this is</h2>
+
+<p><a href="https://www.vagrantup.com/">vagrant</a> is a commandline tool to use in conjunction with a virtual machine provider (like virtualbox) to streamline the setup process of the VM.</p>
+
+<p>While you can have shared folders with virtualbox alone, setting this up can be a pain. </p>
+
+<p><code>vagrant</code> does this for you when it sets up the VM. </p>
+
+<p>Another advantage in using vagrant to setup and run the VM is you don't have to invoke the virtualbox GUI to access the VM's commandline.</p>
+
+<p>Instead you just enter the VM through the command <code>vagrant ssh</code> in a Terminal:</p>
+
+<p><img src="screenshot_valgrind.png" alt="Running valgrind"></p>
+
+<p>This way, you can edit files from within OS X (or whatever your host machine OS is) using your editor of choice and run executables through <code>valgrind</code> or <code>asan</code> on the VM's commandline.</p>
+
+<h2>
+<a id="setup" class="anchor" href="#setup" aria-hidden="true"><span class="octicon octicon-link"></span></a>Setup</h2>
+
+<p>First, install <a href="https://www.virtualbox.org/wiki/Downloads">virtualbox</a> and the <a href="https://www.virtualbox.org/wiki/Downloads">virtualbox extension pack</a>.</p>
+
+<p>Download <a href="https://www.vagrantup.com/downloads.html">vagrant</a> for your system and install it.</p>
+
+<p>Then, download this repository and unzip it to a directory on your machine.</p>
+
+<p>or clone it locally using <code>git</code>:</p>
+
+<pre><code>git clone https://github.com/hckr/cs225-uiuc-vagrant.git
+</code></pre>
+
+<p>In Terminal, navigate to where you extracted or cloned the <code>cs225-uiuc-vagrant</code> repo (e.g. <code>~/Code/cs225-uiuc-vagrant</code>):</p>
+
+<pre><code>cd ~/Code/cs225-uiuc-vagrant
+</code></pre>
+
+<p>Then run the setup script:</p>
+
+<pre><code>./setup.sh
+</code></pre>
+
+<p>This script will create a <code>../data</code> folder one level up from the <code>cs225-uiuc-vagrant</code> directory. This folder will be shared with the vagrant VM, so you can edit files using the host machine. In the VM, the <code>data</code> folder is in <code>~/code</code> </p>
+
+<p>This means that if this repo is located at <code>~/Code/cs225-uiuc-vagrant</code>, then you can modify/add/delete the MP and lab source code within OS X rather than the VM.</p>
+
+<p>The setup script will then provision the VM to install the required software for <code>cs225</code>.</p>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>To enter a commandline prompt within the vagrant VM, run this:</p>
+
+<pre><code>vagrant ssh
+</code></pre>
+
+<p>You'll then see something like this:</p>
+
+<pre><code>[vagrant@localhost ~]$
+</code></pre>
+
+<p>Put anything you want to access from within OS X in the <code>~/code</code> folder in the VM.</p>
+
+<p>To check out the cs225 course MPs and lab materials, you can either run the following from within the VM:</p>
+
+<pre><code>[vagrant@localhost ~]$ cd ~/code &amp;&amp; svn co https://subversion.ews.illinois.edu/svn/sp15-cs225/NETID/ cs225
+</code></pre>
+
+<p>where <code>NETID</code> is <a href="mailto:your...@illinois.edu">your...@illinois.edu</a> NetID.</p>
+
+<p>Or run this in OS X in the <code>data</code> folder: </p>
+
+<pre><code>[me@OSX]$ cd PATH_TO_DATA_FOLDER &amp;&amp; svn co https://subversion.ews.illinois.edu/svn/sp15-cs225/NETID/ cs225
+</code></pre>
+
+<p>where <code>PATH_TO_DATA_FOLDER</code> is the path to where <code>data</code> is in OS X (e.g. <code>~/stuff/data</code>).</p>
+
+<p>Now you can compile your labs/MPs from within the vagrant VM and run their resulting executables through <code>valgrind</code> or <code>asan</code>.</p>
+
+<p>To exit the VM, press <kbd>CTRL-D</kbd> to return to the OS X commandline.</p>
+
+<p>Then save the VM state:</p>
+
+<pre><code>vagrant suspend
+</code></pre>
+      </section>
+    </div>
+    <footer>
+      <p>Project maintained by <a href="https://github.com/hckr">hckr</a></p>
+      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+    </footer>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
