@@ -12,7 +12,7 @@ Another advantage in using vagrant to setup and run the VM is you don't have to 
 
 Instead you just enter the VM through the command `vagrant ssh` in a Terminal:
 
-![Running valgrind](screenshot_valgrind.png)
+![Running valgrind](https://raw.githubusercontent.com/hckr/cs225-uiuc-vagrant/master/screenshot_valgrind.png)
 
 This way, you can edit files from within OS X (or whatever your host machine OS is) using your editor of choice and run executables through `valgrind` or `asan` on the VM's commandline.
 
