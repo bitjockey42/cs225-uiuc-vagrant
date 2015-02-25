@@ -3,6 +3,6 @@
 
 Vagrant.configure(2) do |config|
   config.vm.box = "dreamscapes/archlinux"
-  config.vm.synced_folder "../data", "/home/dev/code"
-  config.vm.provision "shell", path: "setup.sh"
+  config.vm.synced_folder "../data", "/home/vagrant/code"
+  config.vm.provision "shell", path: "bootstrap.sh"
 end

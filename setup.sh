@@ -1,8 +1,12 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
+# This is run on your machine.
 
-pacman -S clang libc++ libpng valgrind gnuplot gdb subversion sudo
+echo "Creating ../data folder"
+mkdir ../data
 
-useradd -m -g users -G wheel -s /bin/bash dev
+echo "Adding archlinux box to vagrant"
+vagrant box add dreamscapes/archlinux
 
-
+echo "Setting up vm and running provisioning step to install required software"
+vagrant up
 
