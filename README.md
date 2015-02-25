@@ -1,5 +1,21 @@
 # Instructions
 
+## What this is
+
+[vagrant](https://www.vagrantup.com/) is a commandline tool to use in conjunction with a virtual machine provider (like virtualbox) to streamline the setup process of the VM.
+
+While you can have shared folders with virtualbox alone, setting this up can be a pain. 
+
+`vagrant` does this for you when it sets up the VM. 
+
+Another advantage in using vagrant to setup and run the VM is you don't have to invoke the virtualbox GUI to access the VM's commandline.
+
+Instead you just enter the VM through the command `vagrant ssh` in a Terminal:
+
+![Running valgrind](screenshot_valgrind.png)
+
+This way, you can edit files from within OS X (or whatever your host machine OS is) using your editor of choice and run executables through `valgrind` or `asan` on the VM's commandline.
+
 ## Setup
 
 First, install [virtualbox](https://www.virtualbox.org/wiki/Downloads) and the [virtualbox extension pack](https://www.virtualbox.org/wiki/Downloads).
@@ -50,7 +66,11 @@ Or run this in OS X in the `data` folder:
 
 where `PATH_TO_DATA_FOLDER` is the path to where `data` is in OS X (e.g. `~/stuff/data`).
 
-Now you can compile your labs/MPs from within the vagrant VM and run their resulting executables through `valgrind` or `asan`:
+Now you can compile your labs/MPs from within the vagrant VM and run their resulting executables through `valgrind` or `asan`.
 
-![Running valgrind](screenshot_valgrind.png)
+To exit the VM, press <kbd>CTRL-D</kbd> to return to the OS X commandline.
+
+Then save the VM state:
+
+	vagrant suspend
 
