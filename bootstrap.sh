@@ -5,5 +5,5 @@
 pacman -Syu
 
 # Install required software
-pacman -S --noconfirm clang libc++ libpng valgrind gnuplot gdb subversion
+pacman -S --needed --noconfirm clang libc++ libpng valgrind gnuplot gdb subversion imagemagick
 
